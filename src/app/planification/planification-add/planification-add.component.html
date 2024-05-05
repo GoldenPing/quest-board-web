@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ajouter une planification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<form [formGroup]="planificationForm" (ngSubmit)="onSubmit()">
+  <ion-item>
+    <ion-input 
+      label="Titre de la planification"
+      type="text" 
+      labelPlacement ="floating"
+      formControlName="title_plan">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input 
+      label="Date de la planification"
+      type="text" 
+      labelPlacement ="floating"
+      formControlName="date_plan">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input 
+      label="Heure de la planification"
+      type="text" 
+      labelPlacement ="floating"
+      formControlName="heure_plan">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input 
+      label="Mj de la planification"
+      type="" 
+      labelPlacement ="floating"
+      formControlName="mj_plan">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input 
+      label="Theme de la planification"
+      type="text" 
+      labelPlacement ="floating"
+      formControlName="theme_plan">
+    </ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-textarea 
+      label="Description de la planification"
+      type="text" 
+      labelPlacement ="floating"
+      fill="solid"
+      maxlength="200"
+      [counter]="true"
+      [counterFormatter]="customCounterFormatter"
+      formControlName="desc_plan">
+    </ion-textarea>
+  </ion-item>
+  <ion-button [disabled]="!planificationForm.valid" expand="block" type="submit">Ajouter</ion-button>
+
+</form>
+</ion-content>

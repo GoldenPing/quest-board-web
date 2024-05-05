@@ -1,0 +1,7 @@
+{
+  "name": "quest-board",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

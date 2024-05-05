@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onClose()">
+        <ion-icon  name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+ 
+    <ion-title>{{titre}}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/imprevues/imprevues-add']" (click)="onAdd()">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="ion-margin-top">
+      <ion-col size="8" offset="2"  >
+         <ion-label *ngIf="plan && plan?.imprevues?.length === 0">Il semblerais qu'il n'y ai aucun imprévue pour l'instant</ion-label>
+         <ion-item *ngFor="let imprevue of plan?.imprevues" >
+          <ion-label>
+            
+            <h2>{{imprevue.raison_imp}}</h2>
+            <p *ngIf="imprevue.peuDecaler_imp">Mais sera libre pour {{imprevue.disponiblilte_imp}}</p>
+            <p *ngIf="!imprevue.peuDecaler_imp">Les carottes sont cuite camarade.</p>
+          </ion-label>
+        </ion-item>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

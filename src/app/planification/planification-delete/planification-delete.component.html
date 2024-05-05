@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-button (click)="onClose()">
+        <ion-icon  name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Est tu vraiment sur de vouloir supprimer cette Planification ?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-button color="success"(click)="onClick()" expand="block" fill="clear" shape="round">
+    Oui
+  </ion-button>
+  <ion-button color="danger" (click)="onClose()" expand="block" fill="clear" shape="round">
+   Non
+  </ion-button>
+</ion-content>

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onReturn()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Création d'un imprevue</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="imprevueForm" (ngSubmit)="onSubmit()">
+    
+    <ion-item>
+      <ion-textarea 
+        label="Raison de l'imprévue"
+        type="text" 
+        labelPlacement ="floating"
+        fill="solid"
+        maxlength="250"
+        [counter]="true"
+        [counterFormatter]="customCounterFormatter"
+        formControlName="raison_imp">
+      </ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-checkbox 
+      (ionChange)="onchange()"
+      labelPlacement="start"
+      justify="start"
+        formControlName="peuDecaler_imp">
+        Est ce que je peux décaler sur un autre jour de la semaine ?
+      </ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-input 
+        label="Date de la planification"
+        type="text" 
+        labelPlacement ="floating"
+        formControlName="disponiblilte_imp">
+      </ion-input>
+    </ion-item>
+
+
+    <ion-button [disabled]="!imprevueForm.valid" expand="block" type="submit">Ajouter</ion-button>
+  
+  </form>
+</ion-content>

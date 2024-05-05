@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="onReturn()">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{plan?.title_plan}}  {{plan?.etat_plan}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onDelete()">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/planification/planification-update']"  (click)="onUpdate()">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-row class="ion-margin-top" class="ion-padding-vertical" >
+      <ion-col class="ion-padding-start" id="date" size="3" offset="1">{{plan?.date_plan}}</ion-col>
+      <ion-col class="ion-text-right ion-padding-end" size="3"  offset="4">{{plan?.heure_plan}}</ion-col>
+      <ion-col size="1"></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col id="mj" size="12">{{plan?.mj_plan}}</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col id="theme" size="12">{{plan?.theme_plan}}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col id="desc" size="6" offset="3" *ngIf="plan?.desc_plan === ''">Il semblerais qu'il n'y ais pas de description pour cette séance. Que de mystère j'en perd mes cheveux</ion-col>
+      <ion-col id="desc" size="6" offset="3" *ngIf="plan?.desc_plan !== ''">{{plan?.desc_plan}}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <ion-button (click)="onImprevue()" expand="block" >
+          Imprévue
+        </ion-button>
+
+        <ion-button (click)="onParticipe()" expand="block" >
+          Participe
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
