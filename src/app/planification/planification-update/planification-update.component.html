@@ -63,7 +63,15 @@
       formControlName="desc_plan">
     </ion-textarea>
   </ion-item>
-  <ion-button [disabled]="!planificationForm.valid" expand="block" type="submit">Ajouter</ion-button>
+
+<ion-item>
+  <ion-label>État de la planification</ion-label>
+  <ion-select formControlName="etat_plan">
+    <ion-select-option *ngFor="let etat of valueEnum" [value]="etat">{{ etat }}</ion-select-option>
+  </ion-select>
+</ion-item>
+
+  <ion-button [disabled]="!planificationForm.valid" expand="block" type="submit">Modifier</ion-button>
 
 </form>
 </ion-content>
