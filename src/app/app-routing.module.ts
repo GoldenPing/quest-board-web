@@ -6,6 +6,9 @@ import { PlanificationAddComponent } from './planification/planification-add/pla
 import { PlanificationOneComponent } from './planification/planification-one/planification-one.component';
 import { ImprevuesAddComponent } from './imprevues/imprevues-add/imprevues-add.component';
 import { PlanificationUpdateComponent } from './planification/planification-update/planification-update.component';
+import { ImprevuesListComponent } from './imprevues/imprevues-list/imprevues-list.component';
+import { ImprevuesOneComponent } from './imprevues/imprevues-one/imprevues-one.component';
+import { MyImprevuesComponent } from './imprevues/my-imprevues/my-imprevues.component';
 
 const routes: Routes = [
   {
@@ -29,7 +32,16 @@ const routes: Routes = [
   {
     path: 'imprevues/imprevues-add',
     component:ImprevuesAddComponent
-  }
+  },
+  {
+    path: 'imprevue/imprevue-list',
+    component:ImprevuesListComponent
+  },
+  {
+    path: 'my-imprevue/imprevue-list',
+    component: MyImprevuesComponent
+  },
+
 ];
 @NgModule({
   imports: [

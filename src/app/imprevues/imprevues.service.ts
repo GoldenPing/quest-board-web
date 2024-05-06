@@ -8,6 +8,7 @@ import { Imprevues } from './imprevue.model';
   providedIn: 'root'
 })
 export class ImprevuesService extends AppService{
+  
   private apiUrlImprevue = 'http://localhost:3000/imprevue'
   override user:any
   constructor(http: HttpClient) {
@@ -23,5 +24,22 @@ export class ImprevuesService extends AppService{
     console.log(bodyHttp);
     await this.http.post<Imprevues>(this.apiUrlImprevue,bodyHttp).toPromise()
     return true 
+  }
+
+  async getAll(){
+    const retour = await this.http.get<Imprevues[]>(this.apiUrlImprevue).toPromise()
+    console.log(retour);
+    
+    return retour
+  }
+
+  async getOne(id : number){
+    const retour = await this.http.get<Imprevues>(this.apiUrlImprevue+'/'+ id).toPromise()
+    return retour
+  }  
+
+  
+  async delete(id: number) {
+    const retour = await this.http.delete(this.apiUrlImprevue+'/'+id).toPromise()
   }
 }

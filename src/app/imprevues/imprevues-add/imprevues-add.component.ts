@@ -26,7 +26,7 @@ export class ImprevuesAddComponent  implements OnInit {
 
   ngOnInit() {
     console.log(this.imprevueForm.value.peuDecaler_imp);
-    this.imprevueForm.get('disponibilite_imp')?.disable()
+    this.imprevueForm.get('disponiblilte_imp')?.disable()
     this.plan = this.dataService.getPlanification()
     if (!this.plan) {
       this.router.navigate(['planification/planification-list']);
@@ -56,15 +56,15 @@ export class ImprevuesAddComponent  implements OnInit {
   customCounterFormatter(inputLength: number, maxLength: number) {
     return `${maxLength - inputLength} caractères restant`;
   }
-  onchange(){
+  onChange(){
     console.log(this.imprevueForm.value.peuDecaler_imp);
     
     if (this.imprevueForm.value.peuDecaler_imp) {
-      this.imprevueForm.get('disponibilite_imp')?.enable()
+      this.imprevueForm.get('disponiblilte_imp')?.enable()
       
     }else{
-      this.imprevueForm.get('disponibilite_imp')?.setValue('')
-      this.imprevueForm.get('disponibilite_imp')?.disable()
+      this.imprevueForm.get('disponiblilte_imp')?.setValue('')
+      this.imprevueForm.get('disponiblilte_imp')?.disable()
     }
   }
   onReturn(){
