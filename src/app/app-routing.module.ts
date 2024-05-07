@@ -41,6 +41,10 @@ const routes: Routes = [
     path: 'my-imprevue/imprevue-list',
     component: MyImprevuesComponent
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
 
 ];
 @NgModule({
