@@ -6,7 +6,7 @@
       </ion-button>
     </ion-buttons>
     <ion-title>{{plan?.title_plan}}  {{plan?.etat_plan}}</ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons *ngIf="admin" slot="end">
       <ion-button (click)="onDelete()">
         <ion-icon name="trash-outline"></ion-icon>
       </ion-button>

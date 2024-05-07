@@ -17,6 +17,7 @@ export class PlanificationOneComponent  implements OnInit {
 
   plan? : Planification
 
+  admin : boolean = false
   constructor(
     private route: ActivatedRoute, 
     private router: Router,
@@ -25,6 +26,7 @@ export class PlanificationOneComponent  implements OnInit {
     private dataService : DataPlanificationService) { }
 
   ngOnInit() {
+    this.admin = localStorage.getItem('admin') === '1'
     this.route.params.subscribe( async params => {
       this.plan = await this.planificationService.getPlanification(params['id'])
       console.log(this.plan);

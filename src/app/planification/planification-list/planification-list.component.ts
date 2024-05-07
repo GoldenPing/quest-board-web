@@ -13,12 +13,14 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class PlanificationListComponent  implements OnInit {
 
   data? : Planification[]
-
+  admin : boolean = false
   constructor(private planificationService: PlanificationService, private route: ActivatedRoute ) { }
 
   async ngOnInit() {
+    this.admin = localStorage.getItem('admin') === '1'
+    console.log(this.admin);
+    
     this.route.queryParams.subscribe((params: Params) => {
-      
       if (params["refresh"]) {
        
       }
