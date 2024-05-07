@@ -29,7 +29,6 @@ export class PlanificationOneComponent  implements OnInit {
     this.admin = localStorage.getItem('admin') === '1'
     this.route.params.subscribe( async params => {
       this.plan = await this.planificationService.getPlanification(params['id'])
-      console.log(this.plan);
       
     })
   }

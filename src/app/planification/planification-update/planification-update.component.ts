@@ -34,7 +34,6 @@ export class PlanificationUpdateComponent  implements OnInit {
     private router :Router) { }
 
   ngOnInit() {
-    console.log(this.plan);  
 
     this.plan = this.dataService.getPlanification()
     if (!this.plan) {

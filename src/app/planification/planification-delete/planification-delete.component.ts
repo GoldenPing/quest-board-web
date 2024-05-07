@@ -25,7 +25,6 @@ export class PlanificationDeleteComponent  implements OnInit {
     this.id = this.navParams.get<number>('id_plan')
   }
   async onClick(){
-    console.log('hello');
     
     if (this.id !== undefined){
       const plan = await this.planificationService.getPlanification(this.id?.toString())

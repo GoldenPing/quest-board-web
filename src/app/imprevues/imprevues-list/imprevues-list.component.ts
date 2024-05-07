@@ -16,12 +16,10 @@ export class ImprevuesListComponent  implements OnInit {
 
   async ngOnInit() {
     this.imps = await this.imprevuesService.getAll()
-    console.log(this.imps);
     
   }
 
  async onClick(id : number){
-    console.log(id);
     const modal = await this.modalControler.create({
       component : ImprevuesOneComponent,
       componentProps: {

@@ -25,7 +25,6 @@ export class ImprevuesAddComponent  implements OnInit {
   private router : Router) { }
 
   ngOnInit() {
-    console.log(this.imprevueForm.value.peuDecaler_imp);
     this.imprevueForm.get('disponiblilte_imp')?.disable()
     this.plan = this.dataService.getPlanification()
     if (!this.plan) {
@@ -37,7 +36,6 @@ export class ImprevuesAddComponent  implements OnInit {
  async onSubmit(){
     if (this.imprevueForm.valid) {
       this.plan = this.dataService.getPlanification()
-      console.log(this.plan?.id_plan);
       
       let dtoImprevue = {
         ...this.imprevueForm.value, plan_id : this.plan?.id_plan, user_id : 2
@@ -45,7 +43,6 @@ export class ImprevuesAddComponent  implements OnInit {
       if(!this.imprevueForm.value.peuDecaler_imp){
         dtoImprevue = {... dtoImprevue, disponiblilte_imp :''}
       }
-      console.log(dtoImprevue);
       
       await this.imprevueService.create(dtoImprevue)
       this.router.navigate(['planification/planification-one', this.plan?.id_plan])
@@ -57,7 +54,6 @@ export class ImprevuesAddComponent  implements OnInit {
     return `${maxLength - inputLength} caractères restant`;
   }
   onChange(){
-    console.log(this.imprevueForm.value.peuDecaler_imp);
     
     if (this.imprevueForm.value.peuDecaler_imp) {
       this.imprevueForm.get('disponiblilte_imp')?.enable()

@@ -21,14 +21,12 @@ export class ImprevuesService extends AppService{
     const bodyHttp = {
       user : this.user,...dtoImprevue
     }
-    console.log(bodyHttp);
     await this.http.post<Imprevues>(this.apiUrlImprevue,bodyHttp).toPromise()
     return true 
   }
 
   async getAll(){
     const retour = await this.http.get<Imprevues[]>(this.apiUrlImprevue).toPromise()
-    console.log(retour);
     
     return retour
   }

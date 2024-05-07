@@ -22,6 +22,10 @@ export class LoginService {
             if(user.role === 'admin'){
                 localStorage.setItem('admin', '1');
             }
+            localStorage.setItem('username',user.username);
+            localStorage.setItem('password',user.password);
+            localStorage.setItem('id_user', user.id_user.toString())
+
         }
         return user
     }

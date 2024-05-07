@@ -28,7 +28,6 @@ export class ParticipeListComponent  implements OnInit {
     this.modalController.dismiss()
   }
   onClick(id_part:number){
-    console.log(id_part);
     let participeToUpdate: Participe | undefined
     participeToUpdate = this.participes?.find(e => e.id_part === id_part)
     this.participes = this.participes?.filter(e => e.id_part !== id_part)
@@ -47,7 +46,6 @@ export class ParticipeListComponent  implements OnInit {
       non_part : participeToUpdate.non_part,
     })
     }  
-    console.log(participeToUpdate);
     
   }
 }

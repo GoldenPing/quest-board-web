@@ -24,7 +24,6 @@ export class MyImprevuesComponent  implements OnInit {
   }
 
  async onClick(id : number){
-    console.log(id);
     const modal = await this.modalControler.create({
       component : ImprevuesOneComponent,
       componentProps: {

@@ -22,7 +22,6 @@ export class ImprevuesByPlanificationComponent  implements OnInit {
   ngOnInit() {
     this.plan = this.navParams.get<Planification>('planification')
     this.titre = "Imprevues de : " + this.plan.title_plan
-    console.log(this.plan);
     
   }
 

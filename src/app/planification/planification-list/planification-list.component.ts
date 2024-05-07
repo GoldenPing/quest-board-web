@@ -18,7 +18,6 @@ export class PlanificationListComponent  implements OnInit {
 
   async ngOnInit() {
     this.admin = localStorage.getItem('admin') === '1'
-    console.log(this.admin);
     
     this.route.queryParams.subscribe((params: Params) => {
       if (params["refresh"]) {
@@ -32,7 +31,6 @@ export class PlanificationListComponent  implements OnInit {
   async reloadData(){
     try {
       this.data =await this.planificationService.getPlanfications()
-      console.log(this.data);
       
     }catch(error){
       console.log(error);

@@ -7,9 +7,9 @@ import { Injectable } from '@angular/core';
 export class AppService {
   private apiUrlAuth = 'http://localhost:3000/auth'
   public user: any =""
-  private username = 'admin'
-  private mdp ='hop'
-  private idUser = 2 
+  private username = localStorage.getItem('username')
+  private mdp = localStorage.getItem('username')
+  private idUser = localStorage.getItem('id_user')
   constructor( protected http : HttpClient) {}
 
   async InitService(){

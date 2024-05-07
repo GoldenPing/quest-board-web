@@ -22,7 +22,6 @@ export class ParticipeService extends AppService{
             user : this.user, ... updateDtoParticipe
         }
        const retour = await this.http.patch<Participe>(this.apiUrlParticpe +'/'+ id, httpBody).toPromise()
-    console.log(retour);
      
     }
 }

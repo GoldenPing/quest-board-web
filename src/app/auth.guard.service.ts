@@ -10,7 +10,7 @@ export class AuthGuardService implements CanActivate{
   }
     canActivate():boolean{
         
-        if (!localStorage.getItem('admin')) {
+        if (!localStorage.getItem('password') && !localStorage.getItem('username')) {
             // Rediriger vers la page de connexion si la valeur n'est pas présente
             this.router.navigate(['/login']);
             return false
