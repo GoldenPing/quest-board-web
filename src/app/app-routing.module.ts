@@ -9,6 +9,7 @@ import { PlanificationUpdateComponent } from './planification/planification-upda
 import { ImprevuesListComponent } from './imprevues/imprevues-list/imprevues-list.component';
 import { ImprevuesOneComponent } from './imprevues/imprevues-one/imprevues-one.component';
 import { MyImprevuesComponent } from './imprevues/my-imprevues/my-imprevues.component';
+import { AuthGuardService } from './auth.guard.service';
 
 const routes: Routes = [
   {
@@ -16,30 +17,31 @@ const routes: Routes = [
     redirectTo: 'planification/planification-list',
     pathMatch: 'full'
   },
-  {path: 'planification/planification-list', component : PlanificationListComponent},
+  {path: 'planification/planification-list', component : PlanificationListComponent, canActivate: [AuthGuardService]},
   {
     path: 'planification/planification-add',
     component:PlanificationAddComponent
   },
   {
     path: 'planification/planification-one/:id',
-    component:PlanificationOneComponent
+    component:PlanificationOneComponent, canActivate: [AuthGuardService]
+
   },
   {
     path: 'planification/planification-update',
-    component:PlanificationUpdateComponent
+    component:PlanificationUpdateComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'imprevues/imprevues-add',
-    component:ImprevuesAddComponent
+    component:ImprevuesAddComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'imprevue/imprevue-list',
-    component:ImprevuesListComponent
+    component:ImprevuesListComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'my-imprevue/imprevue-list',
-    component: MyImprevuesComponent
+    component: MyImprevuesComponent, canActivate: [AuthGuardService]
   },
   {
     path: 'login',

@@ -28,7 +28,8 @@ export class LoginPage implements OnInit {
   async onSubmit(){
     const user = await this.loginService.auth(this.loginform.value.name_user, this.loginform.value.mdp_user)
     if(user){
-      this.router.navigate(["planification/planification-list"])
+      await this.router.navigate(["planification/planification-list"])
+      window.location.reload()
     }
   }
 
