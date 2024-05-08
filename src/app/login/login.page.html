@@ -12,19 +12,19 @@
   </ion-header>
 
 
-  <form class="ion-margin-start" [formGroup]="loginform" (ngSubmit)="onSubmit()">
-
-    <ion-input 
-    label="Nom" 
-    type="text" 
-    labelPlacement="floating" 
+  <form class="ion-margin-start ion-margin-top" [formGroup]="loginform" (ngSubmit)="onSubmit()">
+    <ion-label id="error"  *ngIf="showError" color="danger" >Utilisateur ou Mot de passe Incorrect</ion-label>
+    <ion-input
+    label="Nom"
+    type="text"
+    labelPlacement="floating"
     formControlName="name_user">
     </ion-input>
 
-    <ion-input 
-    label="Mot de passe" 
-    type="password" 
-    labelPlacement="floating" 
+    <ion-input
+    label="Mot de passe"
+    type="password"
+    labelPlacement="floating"
     formControlName="mdp_user">
     </ion-input>
 

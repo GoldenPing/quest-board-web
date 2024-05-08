@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Chronos } from '../chronos.service';
 
 @Component({
@@ -11,7 +11,7 @@ import { Chronos } from '../chronos.service';
 })
 export class LoginPage implements OnInit {
 
-
+  showError = false
   loginform: FormGroup = this.formBuilder.group({
     name_user: ["",Validators.required],
     mdp_user: ["",Validators.required]
@@ -20,16 +20,26 @@ export class LoginPage implements OnInit {
   constructor(
     private formBuilder : FormBuilder,
     private loginService : LoginService,
-    private router: Router
+    private router: Router,
+    private activitedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.activitedRoute.queryParams.subscribe(params => {
+      // Vérifiez si le paramètre "error" est présent dans les paramètres de la requête
+      const error = params['error'];
+      if (error) {
+        // Faites ce que vous devez faire avec le paramètre d'erreur
+        this.showError = true
+      }
+    });
   }
 
   async onSubmit(){
     const user = await this.loginService.auth(this.loginform.value.name_user, this.loginform.value.mdp_user)
+    console.log(user);
+
     if(user){
-      console.log(user);
 
       if(user.first_connexion){
         console.log('first connexion');
