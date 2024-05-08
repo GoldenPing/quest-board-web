@@ -14,7 +14,7 @@ import { AuthGuardService } from './auth.guard.service';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'planification/planification-list',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {path: 'planification/planification-list', component : PlanificationListComponent, canActivate: [AuthGuardService]},
@@ -46,6 +46,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'home',
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule, )
   },
 
 ];

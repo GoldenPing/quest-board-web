@@ -32,6 +32,6 @@ export class Chronos {
 
     resetTimeout(){
         this.stopTimeout()
-        this.resetTimeout()
+        this.startTimeout()
     }
 }

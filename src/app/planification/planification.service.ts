@@ -47,6 +47,7 @@ export class PlanificationService extends AppService {
             desc_plan: planification.desc_plan,
             etat_plan : planification.etat_plan
         }
+        console.log( bodyHttp);
         
       const retour = await this.http.patch(this.apiUrlPlanification+'/'+id,bodyHttp).toPromise()
 

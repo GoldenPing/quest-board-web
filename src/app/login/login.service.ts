@@ -17,7 +17,7 @@ export class LoginService {
     }
 
    async auth(username: string, password : string){
-        const bodyAuth = { "password":password, "username":username }
+        const bodyAuth = { "password":password, "username":username,"refresh" : false }
       const user = await this.http.post<User>(this.apiUrlAuth, bodyAuth).toPromise();
         if(user){
             if(user.role === 'admin'){

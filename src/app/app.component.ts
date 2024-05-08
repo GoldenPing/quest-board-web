@@ -9,6 +9,7 @@ import { Chronos } from './chronos.service';
 export class AppComponent implements OnInit {
   isAdmin = localStorage.getItem('admin') === '1' 
   public appPages = [
+    { title: 'Home', url: '/home', icon: 'mail' },
     { title: 'Planification', url: '/planification/planification-list', icon: 'mail' },
     { title: 'Imprévues', url: '/imprevue/imprevue-list', icon: 'mail' },
     { title: 'Mes Imprévues', url: '/my-imprevue/imprevue-list', icon: 'mail' },
