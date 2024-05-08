@@ -18,6 +18,7 @@ export class Chronos {
             localStorage.removeItem('id_user')
             localStorage.removeItem('username')
             localStorage.removeItem('password')
+            localStorage.removeItem('admin')
             this.router.navigate(['login'])
         },this.delais)
     }
