@@ -19,7 +19,7 @@ export class PlanificationOneComponent  implements OnInit {
 
   admin : boolean = false
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private router: Router,
     private planificationService : PlanificationService,
     private modalControler : ModalController,
@@ -29,7 +29,7 @@ export class PlanificationOneComponent  implements OnInit {
     this.admin = localStorage.getItem('admin') === '1'
     this.route.params.subscribe( async params => {
       this.plan = await this.planificationService.getPlanification(params['id'])
-      
+
     })
   }
 
@@ -38,7 +38,7 @@ export class PlanificationOneComponent  implements OnInit {
       queryParams: {"refresh" : true}
     }
     this.router.navigate(['/planification/planification-list'],navigationExtra)
- 
+
   }
   async onImprevue(){
     const modal = await this.modalControler.create({
@@ -72,7 +72,7 @@ export class PlanificationOneComponent  implements OnInit {
 
   async onUpdate(){
     this.dataService.setPlanification(this.plan)
-    
-    
+
+
   }
 }

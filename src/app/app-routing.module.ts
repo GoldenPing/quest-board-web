@@ -51,7 +51,11 @@ const routes: Routes = [
     path: 'home',
     canActivate: [AuthGuardService],
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule, )
+  },  {
+    path: 'change-password',
+    loadChildren: () => import('./change-password/change-password.module').then( m => m.ChangePasswordPageModule)
   },
+
 
 ];
 @NgModule({

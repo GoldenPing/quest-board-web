@@ -11,7 +11,7 @@ import { Chronos } from '../chronos.service';
 })
 export class LoginPage implements OnInit {
 
-  
+
   loginform: FormGroup = this.formBuilder.group({
     name_user: ["",Validators.required],
     mdp_user: ["",Validators.required]
@@ -29,8 +29,15 @@ export class LoginPage implements OnInit {
   async onSubmit(){
     const user = await this.loginService.auth(this.loginform.value.name_user, this.loginform.value.mdp_user)
     if(user){
-      await this.router.navigate(["home"])
-      window.location.reload()
+      console.log(user);
+
+      if(user.first_connexion){
+        console.log('first connexion');
+        this.router.navigate(['change-password'])
+      }else{
+        await this.router.navigate(["home"])
+        window.location.reload()
+      }
     }
   }
 

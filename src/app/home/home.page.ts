@@ -9,7 +9,7 @@ import Planification from '../planification/planification.model';
 })
 export class HomePage implements OnInit {
 
-  semaine : number = 19 
+  semaine : number = 19
   daysOfWeek: Date[] = []
   calendar! : any
   plan?: Planification[]
@@ -23,20 +23,22 @@ export class HomePage implements OnInit {
     this.plan =await this.planificationService.getPlanfications()
     this.linkDatePlan()
   }
-    
-  
+
+
 
   onChangeSem(value:number){
     this.semaine = this.semaine + value
-    
+
     if(this.semaine > 52){
-      this.semaine = 1 
+      this.semaine = 1
     }
     if (this.semaine === 0) {
       this.semaine = 52
     }
 
     this.defineDate(value)
+    this.planOnCalendar = Array(7).fill('')
+    this.linkDatePlan();
   }
 
   defineDate( value: number = 0){
@@ -44,15 +46,15 @@ export class HomePage implements OnInit {
     let debutsem=new Date()
     if (value !== 0) {
       const numSemaineActuell = this.dateWeek(debutsem)
-      const deltaSemaine =  this.semaine - +numSemaineActuell 
+      const deltaSemaine =  this.semaine - +numSemaineActuell
       debutsem.setDate(debutsem.getDate() + deltaSemaine * 7)
       console.log(debutsem);
-      
+
     }
     const debutJsem=debutsem.setUTCDate(debutsem.getUTCDate()-debutsem.getUTCDay()+1)
     debutsem = new Date(debutJsem)
-    
-    
+
+
     for (let i = 0; i < 7; i++) {
       const currentDate = new Date(debutsem);
       currentDate.setDate(debutsem.getDate() + i);
@@ -64,11 +66,11 @@ export class HomePage implements OnInit {
         "days" : e .getDate().toString().padStart(2, '0'),
         "month" : (e .getMonth() + 1).toString().padStart(2, '0'),
       }
-      
+
       return calendar
      })
      console.log(this.calendar);
-     
+
   }
 
   dateWeek(a:Date) {
@@ -80,21 +82,21 @@ export class HomePage implements OnInit {
   }
 
   linkDatePlan(){
-    
+
     for (const index in this.calendar) {
       const date = this.calendar[index].days + "/" + this.calendar[index].month
-      
+
       if(this.plan){
-        
-        
-        if(this.plan.find(e=> e.date_plan === date)){
-          this.planOnCalendar[+index] = this.plan.find(e=> e.date_plan === date)
-          
+
+
+        if(this.plan.filter(e=> e.date_plan === date).length > 0){
+          this.planOnCalendar[+index] = this.plan.filter(e=> e.date_plan === date)
+
         }
       }
     }
 
     console.log(this.planOnCalendar);
-    
+
   }
 }

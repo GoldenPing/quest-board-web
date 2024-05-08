@@ -4,6 +4,9 @@ export class User {
     mdp_user!: string;
     role!: string;
     username!:string;
-    password!:string
+    password!:string;
+    first_connexion!:number
+    actif_user!: number
+
 
 }
