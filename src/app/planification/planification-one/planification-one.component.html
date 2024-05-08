@@ -5,7 +5,7 @@
         <ion-icon name="arrow-back-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>{{plan?.title_plan}}  {{plan?.etat_plan}}</ion-title>
+    <ion-title>{{plan?.title_plan}}</ion-title>
     <ion-buttons *ngIf="admin" slot="end">
       <ion-button (click)="onDelete()">
         <ion-icon name="trash-outline"></ion-icon>
@@ -38,11 +38,11 @@
 
     <ion-row>
       <ion-col size="6" offset="3">
-        <ion-button (click)="onImprevue()" expand="block" >
+        <ion-button  [color]="btnImprevueColor" (click)="onImprevue()" expand="block" >
           Imprévue
         </ion-button>
 
-        <ion-button (click)="onParticipe()" expand="block" >
+        <ion-button [color]="btnParticipeColor" (click)="onParticipe()" expand="block" >
           Participe
         </ion-button>
       </ion-col>

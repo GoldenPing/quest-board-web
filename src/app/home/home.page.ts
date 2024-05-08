@@ -90,7 +90,40 @@ export class HomePage implements OnInit {
 
 
         if(this.plan.filter(e=> e.date_plan === date).length > 0){
-          this.planOnCalendar[+index] = this.plan.filter(e=> e.date_plan === date)
+          this.planOnCalendar[+index] = this.plan.filter(e=> e.date_plan === date).map(plan => {
+            console.log(plan);
+
+            let colorImprevue = ''
+            if (plan.imprevues){
+
+              colorImprevue =
+              plan.imprevues.filter(e => e.peuDecaler_imp === 0).length > 0 ? 'danger' :
+              plan.imprevues.filter(e => e.peuDecaler_imp === 1).length > 0 ? 'warning' :
+              'success';
+              console.log(colorImprevue);
+
+            }
+            let colorParticipe = ''
+            if(plan.participes){
+              console.log( plan.participes.filter(e => e.non_part === 1).length);
+
+              colorParticipe =
+                plan.participes.filter(e => e.non_part === 1).length === 6 ? 'danger' :
+                plan.participes.filter(e => e.non_part === 1).length >= 2 &&  plan.participes.filter(e => e.non_part === 1).length < 6 ? 'warning' :
+                'success';
+
+                console.log(colorParticipe)
+            }
+            let finalColor = 'success'
+            if(colorImprevue ==="danger" || colorParticipe === 'danger'){
+              finalColor = 'danger'
+            }else if (colorImprevue ==="warning" || colorParticipe ==='warning'){
+              finalColor = 'warning'
+            }
+
+            return {...plan,color : finalColor}
+          }
+            )
 
         }
       }

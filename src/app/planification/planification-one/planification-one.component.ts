@@ -16,7 +16,8 @@ import { DataPlanificationService } from 'src/app/dataPlanificationService';
 export class PlanificationOneComponent  implements OnInit {
 
   plan? : Planification
-
+  btnImprevueColor = 'success'
+  btnParticipeColor = 'success'
   admin : boolean = false
   constructor(
     private route: ActivatedRoute,
@@ -29,8 +30,32 @@ export class PlanificationOneComponent  implements OnInit {
     this.admin = localStorage.getItem('admin') === '1'
     this.route.params.subscribe( async params => {
       this.plan = await this.planificationService.getPlanification(params['id'])
+      console.log('hello');
+      if(this.plan){
+        if (this.plan.imprevues) {
+        const sumImprevueDead = this.plan.imprevues.filter(e => e.peuDecaler_imp === 0).length
+          if (sumImprevueDead > 0) {
+            this.btnImprevueColor = 'danger'
+          }else{
+            const sumImprevueMb = this.plan.imprevues.filter(e => e.peuDecaler_imp === 1).length
+            if(sumImprevueMb > 0){
+              this.btnImprevueColor = 'warning'
+
+            }
+          }
+        }
+        if(this.plan.participes){
+          const sumParticipe = this.plan.participes.filter(e => e.non_part == 1).length
+          if(sumParticipe === 6){
+            this.btnParticipeColor ='danger'
+          }else if(sumParticipe >=2){
+            this.btnParticipeColor ='warning'
+          }
+        }
+      }
 
     })
+
   }
 
   onReturn(){
