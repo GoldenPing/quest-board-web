@@ -8,13 +8,16 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpInterceptorService } from './http.interceptor';
+import { Chronos } from './chronos.service';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi: true}
-  ],
+    {provide: HTTP_INTERCEPTORS, useClass:HttpInterceptorService, multi: true}, {
+      provide:Chronos, useClass: Chronos
+      
+    }  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

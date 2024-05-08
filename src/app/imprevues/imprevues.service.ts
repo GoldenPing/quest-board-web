@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AppService } from '../app.service';
 import { CreateImprevuDto } from './imprevue.model.dto';
 import { Imprevues } from './imprevue.model';
+import { Chronos } from '../chronos.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class ImprevuesService extends AppService{
   
   private apiUrlImprevue = 'http://localhost:3000/imprevue'
   override user:any
-  constructor(http: HttpClient) {
-    super(http);
+  constructor(http: HttpClient, chronos: Chronos) {
+    super(http, chronos);
   
     
   }

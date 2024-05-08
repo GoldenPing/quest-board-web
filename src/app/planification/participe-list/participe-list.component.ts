@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, NavParams } from '@ionic/angular';
 import Planification from '../planification.model';
 import { Participe } from '../participe.model';
-import { UpdateDtoParticipe } from '../participe.update.model.dto';
 import { ParticipeService } from '../participe.service';
 
 @Component({
@@ -14,15 +13,19 @@ export class ParticipeListComponent  implements OnInit {
 
   plan?: Planification
   participes? : Participe[]
+  user_name_log = localStorage.getItem("username")
   
   constructor(
     private navParams : NavParams,
     private modalController: ModalController,
-    private participeService : ParticipeService) { }
+    private participeService : ParticipeService,
+    ) { }
 
-  ngOnInit() {
+ async ngOnInit() {
     this.plan = this.navParams.get<Planification>('planification')
     this.participes = this.plan?.participes
+    console.log(this.user_name_log);
+    
   }
   onClose(){
     this.modalController.dismiss()

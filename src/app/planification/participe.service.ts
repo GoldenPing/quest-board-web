@@ -3,6 +3,7 @@ import { AppService } from "../app.service";
 import { HttpClient } from "@angular/common/http";
 import { UpdateDtoParticipe } from "./participe.update.model.dto";
 import { Participe } from "./participe.model";
+import { Chronos } from "../chronos.service";
 
 @Injectable({
     providedIn : "root"
@@ -11,8 +12,8 @@ export class ParticipeService extends AppService{
     private apiUrlParticpe = "http://localhost:3000/participe"
     override user:any
 
-    constructor(http: HttpClient){
-        super(http)
+    constructor(http: HttpClient, chronos : Chronos){
+        super(http, chronos)
     }
 
 

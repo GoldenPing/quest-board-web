@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { User } from "../user.model";
+import { Chronos } from "../chronos.service";
 
 @Injectable(
     {
@@ -21,6 +22,8 @@ export class LoginService {
         if(user){
             if(user.role === 'admin'){
                 localStorage.setItem('admin', '1');
+            }else{
+                localStorage.setItem('admin', '0');
             }
             localStorage.setItem('username',user.username);
             localStorage.setItem('password',user.password);

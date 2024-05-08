@@ -2,47 +2,41 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import Planification from "./planification.model";
 import { createPlanificationDto } from "./planification.model.dto";
+import { AppService } from "../app.service";
+import { Chronos } from "../chronos.service";
 
 @Injectable({
     providedIn: "root"
 })
-export class PlanificationService {
+export class PlanificationService extends AppService {
     private apiUrlPlanification = 'http://localhost:3000/planification'
-    private apiUrlAuth = 'http://localhost:3000/auth'
-    protected user: any
-    private username = 'admin'
-    private mdp ='hop'
 
 
 
-    constructor(protected http: HttpClient){ 
+    constructor( http: HttpClient, chronos : Chronos){ 
+        super(http,chronos)
     }
 
-    async initService(){
-        const bodyAuth = { "password": this.mdp, "username":this.username }
-        this.user = await this.http.post<any>(this.apiUrlAuth, bodyAuth).toPromise();
-    }
+   
 
     async getPlanfications(){
-        this.initService()
        const retour = await this.http.get<Planification[]>(this.apiUrlPlanification).toPromise()
        return retour
     }
 
     async postPlanification(dtoPlanification : createPlanificationDto){
-        await this.initService()
+        await this.InitService()
         const bodyHttp = {user : this.user,...dtoPlanification}
         const retour = await this.http.post(this.apiUrlPlanification,bodyHttp).toPromise()
     }
 
     async getPlanification(id: string){
-        await this.initService()
         const retour = await this.http.get<Planification>(this.apiUrlPlanification+ '/' + id).toPromise()
         return retour
     }
     
     async patchPlanification(id:number, planification: Planification){
-        await this.initService()
+        await this.InitService()
         const bodyHttp = {
             user : this.user, 
             title_plan : planification.title_plan,
