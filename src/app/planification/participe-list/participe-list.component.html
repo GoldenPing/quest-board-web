@@ -14,15 +14,15 @@
   <ion-grid fixed>
     <ion-row>
       <ion-col size="8" offset="2">
-        <ion-item  *ngFor="let participe of participes" >
+        <ion-item  *ngFor="let participe of participes" [color]="participe.non_part === 1 ? 'danger' : 'success'" >
           <ion-label position="inline">{{participe.user.name_user}}</ion-label>
           <ion-buttons slot="end">
-            <ion-button [disabled]="participe.non_part || user_name_log != participe.user.name_user" (click)="onClick(participe.id_part)">
-              <ion-icon color="success" name="checkmark-outline"></ion-icon>
+            <ion-button fill="solid" [disabled]="participe.oui_part || user_name_log !== participe.user.name_user" (click)="onClick(participe.id_part)">
+              <ion-icon color="" name="checkmark-outline"></ion-icon>
             </ion-button>
             
-            <ion-button [disabled]="participe.oui_part || user_name_log != participe.user.name_user" (click)="onClick(participe.id_part)">
-              <ion-icon color="danger" name="close-outline"></ion-icon>
+            <ion-button fill="solid" [disabled]="participe.non_part || user_name_log !== participe.user.name_user" (click)="onClick(participe.id_part)">
+              <ion-icon color="" name="close-outline"></ion-icon>
             </ion-button>
           </ion-buttons>
         </ion-item>

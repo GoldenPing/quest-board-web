@@ -62,7 +62,7 @@ export class PlanificationOneComponent  implements OnInit {
     const navigationExtra: NavigationExtras = {
       queryParams: {"refresh" : true}
     }
-    this.router.navigate(['/planification/planification-list'],navigationExtra)
+    this.router.navigate(['/home'],navigationExtra)
 
   }
   async onImprevue(){

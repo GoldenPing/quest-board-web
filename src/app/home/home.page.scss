@@ -1,4 +1,21 @@
 ion-col{
-    background-color: aquamarine;
-    border: solid maroon;
+
+    border: solid black 1px;
+}
+
+#home{
+    height: 50vh;
+}
+
+.event{
+    height:70vh;
+}
+
+ion-item{
+    border-radius: 5px;
+}
+
+
+ion-label{
+   font-size:   0.5vh;
 }

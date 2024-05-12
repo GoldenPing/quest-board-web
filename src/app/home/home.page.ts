@@ -50,7 +50,7 @@ export class HomePage implements OnInit {
       debutsem.setDate(debutsem.getDate() + deltaSemaine * 7)
 
     }
-    const debutJsem=debutsem.setUTCDate(debutsem.getUTCDate()-debutsem.getUTCDay()+1)
+    const debutJsem=debutsem.setUTCDate(debutsem.getUTCDate()-debutsem.getUTCDay())
     debutsem = new Date(debutJsem)
 
 
@@ -89,7 +89,6 @@ export class HomePage implements OnInit {
 
         if(this.plan.filter(e=> e.date_plan === date).length > 0){
           this.planOnCalendar[+index] = this.plan.filter(e=> e.date_plan === date).map(plan => {
-            console.log(plan);
 
             let colorImprevue = ''
             if (plan.imprevues){
@@ -124,7 +123,6 @@ export class HomePage implements OnInit {
       }
     }
 
-    console.log(this.planOnCalendar);
 
   }
 }
