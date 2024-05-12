@@ -47,7 +47,7 @@ export class LoginPage implements OnInit {
         console.log('first connexion');
         this.router.navigate(['change-password'])
       }else{
-        await this.router.navigate(["home"])
+        await this.router.navigate(["/home"])
         if ( localStorage.getItem('admin') === '1' ) {
   
 
