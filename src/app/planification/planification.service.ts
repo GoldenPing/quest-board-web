@@ -9,15 +9,15 @@ import { Chronos } from "../chronos.service";
     providedIn: "root"
 })
 export class PlanificationService extends AppService {
-    private apiUrlPlanification = 'http://localhost:3000/planification'
+    private apiUrlPlanification = 'http://109.176.199.201:3000/planification'
 
 
 
-    constructor( http: HttpClient, chronos : Chronos){ 
+    constructor( http: HttpClient, chronos : Chronos){
         super(http,chronos)
     }
 
-   
+
 
     async getPlanfications(){
        const retour = await this.http.get<Planification[]>(this.apiUrlPlanification).toPromise()
@@ -34,11 +34,11 @@ export class PlanificationService extends AppService {
         const retour = await this.http.get<Planification>(this.apiUrlPlanification+ '/' + id).toPromise()
         return retour
     }
-    
+
     async patchPlanification(id:number, planification: Planification){
         await this.InitService()
         const bodyHttp = {
-            user : this.user, 
+            user : this.user,
             title_plan : planification.title_plan,
             date_plan: planification.date_plan,
             heure_plan: planification.heure_plan,
@@ -48,9 +48,9 @@ export class PlanificationService extends AppService {
             etat_plan : planification.etat_plan
         }
         console.log( bodyHttp);
-        
+
       const retour = await this.http.patch(this.apiUrlPlanification+'/'+id,bodyHttp).toPromise()
 
-        
+
     }
 }

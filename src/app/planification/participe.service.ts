@@ -9,7 +9,7 @@ import { Chronos } from "../chronos.service";
     providedIn : "root"
 })
 export class ParticipeService extends AppService{
-    private apiUrlParticpe = "http://localhost:3000/participe"
+    private apiUrlParticpe = "http://109.176.199.201:3000/participe"
     override user:any
 
     constructor(http: HttpClient, chronos : Chronos){
@@ -23,6 +23,6 @@ export class ParticipeService extends AppService{
             user : this.user, ... updateDtoParticipe
         }
        const retour = await this.http.patch<Participe>(this.apiUrlParticpe +'/'+ id, httpBody).toPromise()
-     
+
     }
 }

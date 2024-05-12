@@ -9,7 +9,7 @@ import { Chronos } from "../chronos.service";
     }
 )
 export class LoginService {
-    private apiUrlAuth = 'http://localhost:3000/auth'
+    private apiUrlAuth = 'http://109.176.199.201:3000/auth'
 
 
     constructor (private http: HttpClient){

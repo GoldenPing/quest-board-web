@@ -9,7 +9,7 @@ import { User } from "../user.model";
 })
 export class ChangePasswordService extends AppService {
 
-  apiUrlUser = 'http://localhost:3000/user'
+  apiUrlUser = 'http://109.176.199.201:3000/user'
 
   constructor(http : HttpClient, chronos: Chronos){
     super(http, chronos)

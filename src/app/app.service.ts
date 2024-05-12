@@ -6,7 +6,7 @@ import { Chronos } from './chronos.service';
   providedIn: 'root'
 })
 export class AppService {
-  private apiUrlAuth = 'http://localhost:3000/auth'
+  private apiUrlAuth = 'http://109.176.199.201:3000/auth'
   public user: any =""
   private username = localStorage.getItem('username')
   private mdp = localStorage.getItem('password')

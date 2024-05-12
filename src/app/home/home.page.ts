@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   calendar! : any
   plan?: Planification[]
 
-  planOnCalendar = Array(7).fill('')
+  planOnCalendar = Array(7).fill([])
 
   constructor(private planificationService : PlanificationService) { }
 
@@ -37,7 +37,7 @@ export class HomePage implements OnInit {
     }
 
     this.defineDate(value)
-    this.planOnCalendar = Array(7).fill('')
+    this.planOnCalendar = Array(7).fill([])
     this.linkDatePlan();
   }
 
@@ -48,7 +48,6 @@ export class HomePage implements OnInit {
       const numSemaineActuell = this.dateWeek(debutsem)
       const deltaSemaine =  this.semaine - +numSemaineActuell
       debutsem.setDate(debutsem.getDate() + deltaSemaine * 7)
-      console.log(debutsem);
 
     }
     const debutJsem=debutsem.setUTCDate(debutsem.getUTCDate()-debutsem.getUTCDay()+1)
@@ -69,7 +68,6 @@ export class HomePage implements OnInit {
 
       return calendar
      })
-     console.log(this.calendar);
 
   }
 
@@ -100,19 +98,16 @@ export class HomePage implements OnInit {
               plan.imprevues.filter(e => e.peuDecaler_imp === 0).length > 0 ? 'danger' :
               plan.imprevues.filter(e => e.peuDecaler_imp === 1).length > 0 ? 'warning' :
               'success';
-              console.log(colorImprevue);
 
             }
             let colorParticipe = ''
             if(plan.participes){
-              console.log( plan.participes.filter(e => e.non_part === 1).length);
 
               colorParticipe =
                 plan.participes.filter(e => e.non_part === 1).length === 6 ? 'danger' :
                 plan.participes.filter(e => e.non_part === 1).length >= 2 &&  plan.participes.filter(e => e.non_part === 1).length < 6 ? 'warning' :
                 'success';
 
-                console.log(colorParticipe)
             }
             let finalColor = 'success'
             if(colorImprevue ==="danger" || colorParticipe === 'danger'){
