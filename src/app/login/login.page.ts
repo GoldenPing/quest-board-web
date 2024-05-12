@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Chronos } from '../chronos.service';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ export class LoginPage implements OnInit {
     private formBuilder : FormBuilder,
     private loginService : LoginService,
     private router: Router,
-    private activitedRoute: ActivatedRoute
+    private activitedRoute: ActivatedRoute,
+    private appComponent : AppComponent
   ) { }
 
   ngOnInit() {
@@ -46,7 +48,15 @@ export class LoginPage implements OnInit {
         this.router.navigate(['change-password'])
       }else{
         await this.router.navigate(["home"])
-        window.location.reload()
+        if ( localStorage.getItem('admin') === '1' ) {
+  
+
+          this.appComponent.appPages.push({ title: 'Imprévues', url: '/imprevue/imprevue-list', icon: 'mail' })
+        }else{
+          if (this.appComponent.appPages.length > 3) {
+            this.appComponent.appPages.pop()
+          }
+        }
       }
     }
   }
