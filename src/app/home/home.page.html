@@ -39,14 +39,14 @@
 
     <ion-row >
       <ion-col class="event small-text" size="1.75">
-        <ion-item ngIf="planOnCalendar[1] !== ''" *ngFor="let plan of planOnCalendar[0]" [color]="plan.color" [routerLink]="['/planification/planification-one/',plan.id_plan]">
+        <ion-item  *ngFor="let plan of planOnCalendar[0]" [color]="plan.color" [routerLink]="['/planification/planification-one/',plan.id_plan]">
           <ion-label>{{plan.title_plan}}</ion-label>
         </ion-item>
 
       </ion-col>
       <ion-col class="event small-text" size="1.7">
 
-        <ion-item ngIf="planOnCalendar[1] !== ''" *ngFor="let plan of planOnCalendar[1]"  [color]="plan.color"[routerLink]="['/planification/planification-one/',plan.id_plan]">
+        <ion-item  *ngFor="let plan of planOnCalendar[1]"  [color]="plan.color"[routerLink]="['/planification/planification-one/',plan.id_plan]">
           <ion-label class="ion-no-padding">{{plan.title_plan}}</ion-label>
         </ion-item>
 

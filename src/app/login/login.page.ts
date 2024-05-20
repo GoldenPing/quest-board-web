@@ -52,6 +52,9 @@ export class LoginPage implements OnInit {
   
 
           this.appComponent.appPages.push({ title: 'Imprévues', url: '/imprevue/imprevue-list', icon: 'mail' })
+          if (this.appComponent.appPages.length > 4) {
+            this.appComponent.appPages.pop()
+          }
         }else{
           if (this.appComponent.appPages.length > 3) {
             this.appComponent.appPages.pop()

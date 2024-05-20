@@ -9,7 +9,7 @@ import Planification from '../planification/planification.model';
 })
 export class HomePage implements OnInit {
 
-  semaine : number = 19
+  semaine : number = +this.dateWeek(new Date())
   daysOfWeek: Date[] = []
   calendar! : any
   plan?: Planification[]
@@ -39,6 +39,8 @@ export class HomePage implements OnInit {
     this.defineDate(value)
     this.planOnCalendar = Array(7).fill([])
     this.linkDatePlan();
+    console.log(this.planOnCalendar);
+    
   }
 
   defineDate( value: number = 0){
@@ -70,7 +72,7 @@ export class HomePage implements OnInit {
      })
 
   }
-
+// Calule du numéro de semaine
   dateWeek(a:Date) {
     var d = a ? new Date(a) : new Date();
     d.setHours(0,0,0,0);
